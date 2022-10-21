@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  <configuration>
+  	<settings>
+  		<!-- 컬럼명을 카멜표기법으로 -->
+  		<setting name="mapUnderscoreToCamelCase" value="true"/>
+  		<!-- 서버에서 DB로 NULL을 보냈을 때 -->
+  		<setting name="jdbcTypeForNull" value="NULL"/>
+  	</settings>
+  	
+  	<typeAliases>
+  		<!-- 별칭 -->
+  		<!--  
+  		<typeAlias type="com.yedam.java.emp.service.EmpVO" alias="empInfo"/>
+  		-->
+  		<package name="com.yedam.java.free.service"/>
+  	</typeAliases>
+  	<typeHandlers>
+  		<!-- java.sql.Timestamp를 java.util.Date 형으로 변환 -->
+  		<typeHandler javaType="java.sql.Date" handler="org.apache.ibatis.type.DateTypeHandler"/>
+  	</typeHandlers>
+  	
+  	<!-- mapper 개별등록시
+  	<mappers>
+  		<mapper class="com.yedam.free.mapper.BoardMapper"/>
+  	</mappers>
+  	-->
+  	
+  </configuration>
