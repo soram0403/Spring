@@ -79,10 +79,10 @@
 			<if test ="image != null and !image.equals('')">
 				image = #{image},
 			</if>
-			<if test="updatedate != null">
+			<if test="updatedate != null and !updatedate.equals('')">
 				updatedate = #{updatedate}
 			</if>
-			<if test="updatedate != null">
+			<if test="updatedate != null and !updatedate.equals('')">
 				updatedate = sysdate
 			</if> 
 		</set>	
