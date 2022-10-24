@@ -8,6 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
+<div align="center">
 	<form id="insertForm" action="insert" method="post" onsubmit="return formOption()">
 		<div>
 			<h3>게시글 등록</h3>
@@ -37,6 +38,7 @@
 		<button type="submit">등록</button>
 		<button type="button">목록</button>
 	</form>
+	</div>
 	<script>
 		$(document).ready(function(){
 			// $('button[type="submit"]').click(formOption);
