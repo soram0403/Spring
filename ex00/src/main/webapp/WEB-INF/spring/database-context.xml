@@ -28,6 +28,13 @@
 	
 	<!-- mapper(인터페이스 + xml) scan --> 
 	<mybatis-spring:scan base-package="com.yedam.java.**.mapper" />	
+	
+	<!-- transaction setting -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<tx:annotation-driven/>
 </beans>
 
 
