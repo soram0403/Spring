@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.dsr.user.mapper.UserMapper">
+	<select id="getUserList" resultType="UserVO"> 
+		SELECT *
+		FROM users
+	</select>
+	
+	<select id="getUserInfo" resultType="UserVO">
+	SELECT substr(user_phone,1,5) || lpad('*',substr(length(user_phone)-5,1),'*') as user_phone
+		FROM users
+		WHERE user_id = #{userId}
+	</select>
+	
+	<insert id="insertUser" parameterType="UserVO">
+		INSERT INTO users (
+							user_id
+							,user_name
+							,user_date
+						   <if test="userPhone != null and !userPhone.equals('')">
+						   ,user_phone
+						   </if>
+						   <if test="userEmail != null and !userEmail.equals('')">
+						   ,user_email
+						   </if>
+						   )
+					VALUES (
+							#{userId}
+							,#{userName}
+							<if test="userDate != null and !userDate.equals('')">
+						   ,sysdate
+						   </if>
+						   ,#{userDate}
+						   <if test="userPhone != null and !userPhone.equals('')">
+						   ,#{userPhone}
+						   </if>
+						   <if test="userEmail != null and !userEmail.equals('')">
+						   ,#{userEmail}
+						   </if>
+							)
+	</insert>
+	
+	<update id="updateUser" parameterType="UserVO">
+		UPDATE users
+		<set>
+			<if test="userName != null and !userName.equals('')">
+				user_name = #{userName},
+			</if>
+			<if test="userNic != null and !userNic.equals('')">
+				user_nic = #{userNic},
+			</if>
+			<if test="userPhone != null and !userPhone.equals('')">
+				user_phone = #{userPhone},
+			</if>
+			<if test="userEmail != null and !userEmail.equals('')">
+				user_email = #{userEmail}
+			</if>
+			
+		</set>
+	</update>
+	
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM users
+		WHERE user_id = #{userId}
+	</delete>
+	
+	<!-- 관리자 로그인 -->
+	<select id="loginUser" resultType="UserVO">
+		SELECT *
+		FROM users
+		WHERE user_id = #{userId}
+		AND user_password = #{userPassword}
+	</select>
+</mapper>
