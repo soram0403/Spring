@@ -14,4 +14,6 @@ public interface BookMapper {
 	public int updateBook(BookVO vo);
 	
 	public int deleteBook(int bookNo);
+	
+	public BookVO getRentalInfo();
 }

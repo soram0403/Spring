@@ -32,4 +32,12 @@
 								#{bookInfo}
 								)
 	</insert>
+	<select id="getRentalInfo" resultType="BookVO">
+		SELECT b.book_no, b.book_name, SUM(r.rent_price) AS total_price
+		FROM book_tbl_06 b JOIN rent_tbl_06 r
+		ON b.book_no = r.book_no
+		GROUP BY b.book_no, b.book_name
+		ORDER BY 4 DESC, 4 DESC, 1 ASC 
+		
+	</select>
 </mapper>
